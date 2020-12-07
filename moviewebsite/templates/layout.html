@@ -1,10 +1,39 @@
 <!DOCTYPE html>
+
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Movie</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='main.css') }}"
+    />
+
+	<link
+      rel="bookmark"
+	  type="image/x-icon"
+      href="favicon.ico"
+    />
+
+	<link
+      rel="icon"
+      href="favicon.ico"
+    />
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header>
+          {% include 'navigation.html' %}
+        </header>
+
+        <div id="container">
+          <!-- Main content block to be supplied by page. -->
+          {% block content %} {% endblock %}
+        </div><!--End div class container-->
+
+    </div> <!--End div class wrapper-->
+  </body>
 </html>

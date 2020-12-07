@@ -1,4 +1,5 @@
 import abc
+from moviewebsite.domainmodel.movie import Movie
 
 repo_instance = None
 
