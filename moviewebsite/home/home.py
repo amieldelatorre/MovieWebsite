@@ -7,4 +7,5 @@ home_blueprint = Blueprint('home_bp', __name__)
 
 @home_blueprint.route('/', methods=['GET'])
 def home():
+    print(repo.repo_instance.get_movies_by_title_and_year('Guardian', 2014))
     return render_template('home.html')
