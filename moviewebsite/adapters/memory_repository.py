@@ -22,6 +22,7 @@ class MemoryRepository(AbstractRepository):
         self.__movies: List[Movie] = list()
         self.__reviews: List[Review] = list()
         self.__users: List[User] = list()
+        self.__genres: List[Genre] = list()
 
     def add_movie(self, movie: Movie):
         self.__movies.append(movie)
@@ -70,23 +71,39 @@ class MemoryRepository(AbstractRepository):
     def get_users(self) -> List[User]:
         return self.__users
 
+    def get_number_of_users(self) -> int:
+        return len(self.__users)
+
     def add_review(self, review: Review):
-        pass
+        super().add_review(review)
+        self.__reviews.append(review)
 
     def get_reviews(self) -> List[Review]:
-        pass
+        return self.__reviews
+
+    def get_number_of_reviews(self) -> int:
+        return len(self.__reviews)
+
+    def get_genres(self) -> List[Genre]:
+        return self.__genres
+
+    def get_genre_by_name(self, name: str) -> Genre:
+        return next((genre for genre in self.__genres if genre.genre_name.lower() == name.lower()), None)
+
+    def get_number_of_genres(self) -> int:
+        return len(self.__genres)
 
     def get_movie_actors(self, movie: Movie) -> List[Actor]:
-        pass
+        return movie.actors
 
-    def get_movie_director(self, director: Director) -> Director:
-        pass
+    def get_movie_director(self, movie: Movie) -> Director:
+        return movie.director
 
     def get_movie_genres(self, movie: Movie) -> List[Genre]:
-        pass
+        return movie.genres
 
     def get_user_watchlist(self, user) -> Watchlist:
-        pass
+        return user.watchlist
 
 
 def read_csv_file(filename: str):

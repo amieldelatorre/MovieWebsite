@@ -71,8 +71,14 @@ class AbstractRepository(abc.ABC):
         """ Get a user with a specific username """
         raise NotImplementedError
 
+    @abc.abstractmethod
     def get_users(self) -> List[User]:
         """ Gets all users """
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def get_number_of_users(self) -> int:
+        """ Get the number of users in the repository """
         raise NotImplementedError
 
     # THIS IS THE REGION FOR REVIEWS
@@ -86,11 +92,31 @@ class AbstractRepository(abc.ABC):
             raise RepositoryException('Comment not correctly attached to a User')
         if review.movie is None or review not in review.movie.reviews:
             raise RepositoryException('Comment not correctly attached to an Article')
-        raise NotImplementedError
 
     @abc.abstractmethod
     def get_reviews(self) -> List[Review]:
         """ Gets all the reviews """
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def get_number_of_reviews(self) -> int:
+        """ Gets the number of genres in the repository """
+        raise NotImplementedError
+
+    # THIS IS THE REGION FOR GENRES
+    @abc.abstractmethod
+    def get_genres(self) -> List[Genre]:
+        """ Gets all genres in the repository """
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def get_genre_by_name(self, name: str) -> Genre:
+        """ Gets a specified genre by the genre name """
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    def get_number_of_genres(self) -> int:
+        """ Gets the number of genres in the repository """
         raise NotImplementedError
 
     # THIS IS THE REGION FOR OTHER GET REQUESTS TO THE DATABASE / REPOSITORY
@@ -100,7 +126,7 @@ class AbstractRepository(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_movie_director(self, director: Director) -> Director:
+    def get_movie_director(self, movie: Movie) -> Director:
         """ Get a specified movie's director """
         raise NotImplementedError
 
