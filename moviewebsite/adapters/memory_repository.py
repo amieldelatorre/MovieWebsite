@@ -1,6 +1,6 @@
 import csv
 import os
-from random import random
+import random
 from typing import List
 
 from werkzeug.security import generate_password_hash
@@ -56,9 +56,11 @@ class MemoryRepository(AbstractRepository):
         if quantity >= movies_count:
             raise IndexError
 
-        random_index = random.sample(range(1, movies_count), quantity)
+        random_indexes = random.sample(range(0, movies_count), quantity)
+
         movies = list()
-        for index in random_index:
+
+        for index in random_indexes:
             movies.append(self.get_movie_by_index(index))
         return movies
 
