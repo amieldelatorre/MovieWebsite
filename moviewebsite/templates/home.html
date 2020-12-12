@@ -2,5 +2,11 @@
 
 {% block content %}
 <main id="main">
+    {% for movie in movies %}
+        <div class="home-movie-result">
+            <img class="result-img" alt="{{movie.title}}" src="{{movie.poster_link}}" style="height:444px;width:300px;">
+            <h3>{{movie.title}}</h3>
+        </div>
+    {% endfor %}
 </main>
 {% endblock %}

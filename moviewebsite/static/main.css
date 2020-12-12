@@ -16,7 +16,6 @@ body {
 }
 
 #wrapper {
-    height: 200vh;
     background-color: #333;
     display: grid;
 }
@@ -168,4 +167,17 @@ nav a:hover {
     nav a:hover::before {
         transform: scale(1, 1);
     }
+}
+
+
+main {
+    width: 100%;
+    margin: 150px 5% 5% auto;
+}
+
+.home-movie-result {
+    width: 350px;
+    float: left;
+    color: white;
+
 }

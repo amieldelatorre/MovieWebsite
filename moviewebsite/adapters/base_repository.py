@@ -60,6 +60,10 @@ class AbstractRepository(abc.ABC):
         """ Gets a random amount of movies based on the quantity specified """
         raise NotImplementedError
 
+    def add_poster_link(self, movie: Movie):
+        """ Adds the link to the poster of the movie """
+        raise NotImplementedError
+
     # THIS IS THE REGION FOR USERS
     @abc.abstractmethod
     def add_user(self, user: User):
@@ -104,6 +108,11 @@ class AbstractRepository(abc.ABC):
         raise NotImplementedError
 
     # THIS IS THE REGION FOR GENRES
+    @abc.abstractmethod
+    def add_genre(self, genre: Genre):
+        """ Adds a genre to the repository """
+        raise NotImplementedError
+
     @abc.abstractmethod
     def get_genres(self) -> List[Genre]:
         """ Gets all genres in the repository """

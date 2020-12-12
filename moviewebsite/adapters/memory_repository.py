@@ -2,6 +2,7 @@ import csv
 import os
 import random
 from typing import List
+import omdb
 
 from werkzeug.security import generate_password_hash
 
@@ -64,6 +65,19 @@ class MemoryRepository(AbstractRepository):
             movies.append(self.get_movie_by_index(index))
         return movies
 
+    def add_poster_link(self, movie: Movie):
+        omdb.set_default('apikey', 'b03ac630')
+        query_result = omdb.get(title=movie.title, year=movie.year, fullplot=True, tomatoes=True)
+
+        try:
+            poster_link = query_result['poster']
+            if poster_link is not None and poster_link != "":
+                movie.poster_link = poster_link
+            else:
+                movie.poster_link = '/static/blankimg.jpg'
+        except:
+            movie.poster_link = '/static/blankimg.jpg'
+
     def add_user(self, user: User):
         self.__users.append(user)
 
@@ -85,6 +99,9 @@ class MemoryRepository(AbstractRepository):
 
     def get_number_of_reviews(self) -> int:
         return len(self.__reviews)
+
+    def add_genre(self, genre: Genre):
+        self.__genres.append(genre)
 
     def get_genres(self) -> List[Genre]:
         return self.__genres
@@ -126,7 +143,11 @@ def load_movies(data_path: str, repo: MemoryRepository):
     reader = MovieFileCSVReader(os.path.join(data_path, 'Data1000Movies.csv'))
     reader.read_csv_file()
     for movie in reader.dataset_of_movies:
+        # repo.add_poster_link(movie)
         repo.add_movie(movie)
+
+    for genre in reader.dataset_of_genres:
+        repo.add_genre(genre)
 
 
 def load_users(data_path: str, repo: MemoryRepository):
