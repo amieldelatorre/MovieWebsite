@@ -41,7 +41,7 @@ class AbstractRepository(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
-    def get_movies_by_title_and_year(self, title: str, year: int) -> List[Movie]:
+    def get_movie_by_title_and_year(self, title: str, year: int) -> List[Movie]:
         """ Gets movies using a title and year """
         raise NotImplementedError
 

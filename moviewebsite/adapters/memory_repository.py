@@ -41,7 +41,7 @@ class MemoryRepository(AbstractRepository):
     def get_movie_by_index(self, index: int) -> Movie:
         return self.__movies[index]
 
-    def get_movies_by_title_and_year(self, title: str, year: int) -> Movie:
+    def get_movie_by_title_and_year(self, title: str, year: int) -> Movie:
         return next((movie for movie in self.__movies if title.lower() in movie.title.lower()
                      and movie.year == year), None)
 

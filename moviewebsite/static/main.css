@@ -171,13 +171,18 @@ nav a:hover {
 
 
 main {
-    width: 100%;
-    margin: 150px 5% 5% auto;
+    overflow: hidden;
+    width: 98%;
+    margin: 150px auto auto auto;
 }
 
 .home-movie-result {
     width: 350px;
     float: left;
     color: white;
-
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0:
+    padding: 20px;
 }
+

@@ -32,5 +32,8 @@ def create_app(test_config=None):
         from .home import home
         app.register_blueprint(home.home_blueprint)
 
+        from .moviepage import moviepage
+        app.register_blueprint(moviepage.moviepage_blueprint)
+
     return app
 

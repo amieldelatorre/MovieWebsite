@@ -3,10 +3,12 @@
 {% block content %}
 <main id="main">
     {% for movie in movies %}
+    <a href="{{url_for('moviepage_bp.movie_page', name=movie.title, year=movie.year)}}">
         <div class="home-movie-result">
             <img class="result-img" alt="{{movie.title}}" src="{{movie.poster_link}}" style="height:444px;width:300px;">
             <h3>{{movie.title}}</h3>
         </div>
+    </a>
     {% endfor %}
 </main>
 {% endblock %}
