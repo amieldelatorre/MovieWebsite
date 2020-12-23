@@ -7,30 +7,25 @@
       {% if movie.poster_link is none%}
       <img class="movie-page-image" alt="{{movie.title}}" src="{{ url_for('static', filename='blankimg.jpg') }}">
       {% else %}
-    <img class="movie-page-image" alt="{{movie.title}}" src="{{poster_link}}">
+    <img class="movie-page-image" alt="{{movie.title}}" src="{{movie.poster_link}}">
     {% endif %}
     </div>
     <div class="movie-info">
-      <p><strong>Release Year:</strong> <a href="{{links[3][movie.year]}}">{{movie.year}}</a></p>
+      <p><strong>Release Year:</strong> <a href="{{url_for('moviepage_bp.movie_page', year=movie.year)}}">{{movie.year}}</a></p>
       <p><strong>Metascore:</strong> {{movie.metascore}}</p>
       <p><strong>Rating:</strong> {{movie.rating}}</p>
       <p><strong>Amount of Votes for Rating:</strong> {{movie.rating_votes}}</p>
       <p><strong>Revenue:</strong> ${{movie.revenue}} million</p>
       <p><strong>Movie Runtime:</strong> {{movie.runtime_minutes}} minutes</p>
 
-      <p><strong>Genre:</strong> {% for genre in movie.genres%}<a href="{{links[0][genre.genre_name]}}">{{genre.genre_name}}</a> {% endfor %}</p>
+      <p><strong>Genre:</strong> {% for genre in movie.genres%}<a href="{{url_for('moviepage_bp.movie_page', genre=genre.name)}}">{{genre.genre_name}}</a> {% endfor %}</p>
 
-      <p><strong>Actors:</strong> {% for actor in movie.actors%}<a href="{{links[1][actor.actor_full_name]}}">{{actor.actor_full_name}}</a>, {% endfor %} ...</p>
+      <p><strong>Actors:</strong> {% for actor in movie.actors%}<a href="{{url_for('moviepage_bp.movie_page', actor=actor.name)}}">{{actor.actor_full_name}}</a>, {% endfor %} ...</p>
 
-      <p><strong>Director:</strong> <a href="{{links[2][movie.director.director_full_name]}}">{{movie.director.director_full_name}}</a></p>
+      <p><strong>Director:</strong> <a href="{{url_for('moviepage_bp.movie_page', director=movie.director.name)}}">{{movie.director.director_full_name}}</a></p>
       <p class="movie-page-description"><strong>Description:</strong> {{movie.description}}</p>
 
-      <button class="btn-prev" onclick="location.href='{{watch_url}}'">Watch Movie</button>
-      {% if watchlist == None or movie not in watchlist.movies %}
-      <button class="btn-prev" onclick="location.href='{{add_to_watchlist_url}}'">Add to Watch List</button>
-      {% elif movie in watchlist.movies %}
-      <button class="btn-prev" onclick="location.href='{{remove_from_watchlist_url}}'">Remove from Watch List</button>
-      {% endif %}
+
 
       </div>
     </div>

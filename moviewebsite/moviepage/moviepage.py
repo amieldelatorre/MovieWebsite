@@ -14,6 +14,6 @@ def movie_page():
         return redirect(url_for('home_bp.home'))
 
     movie = repo.repo_instance.get_movie_by_title_and_year(title, year)
-    print(movie)
 
-    return render_template('home.html')
+    return render_template('movie.html',
+                           movie=movie)

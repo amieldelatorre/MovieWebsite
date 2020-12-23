@@ -11,7 +11,6 @@ def home():
     random_movies = repo.repo_instance.get_random_movies(number_of_random_movies)
     for movie in random_movies:
         repo.repo_instance.add_poster_link(movie)
-        print(movie.poster_link)
 
     return render_template('home.html',
                            movies=random_movies
