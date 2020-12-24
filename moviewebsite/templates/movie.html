@@ -18,11 +18,11 @@
       <p><strong>Revenue:</strong> ${{movie.revenue}} million</p>
       <p><strong>Movie Runtime:</strong> {{movie.runtime_minutes}} minutes</p>
 
-      <p><strong>Genre:</strong> {% for genre in movie.genres%}<a href="{{url_for('moviepage_bp.movie_page', genre=genre.name)}}">{{genre.genre_name}}</a> {% endfor %}</p>
+      <p><strong>Genre:</strong> {% for genre in movie.genres%}<a href="{{url_for('moviepage_bp.movie_page', genre=genre.genre_name)}}">{{genre.genre_name}}</a> {% endfor %}</p>
 
-      <p><strong>Actors:</strong> {% for actor in movie.actors%}<a href="{{url_for('moviepage_bp.movie_page', actor=actor.name)}}">{{actor.actor_full_name}}</a>, {% endfor %} ...</p>
+      <p><strong>Actors:</strong> {% for actor in movie.actors%}<a href="{{url_for('moviepage_bp.movie_page', actor=actor.full_name)}}">{{actor.full_name}}</a>, {% endfor %} ...</p>
 
-      <p><strong>Director:</strong> <a href="{{url_for('moviepage_bp.movie_page', director=movie.director.name)}}">{{movie.director.director_full_name}}</a></p>
+      <p><strong>Director:</strong> <a href="{{url_for('moviepage_bp.movie_page', director=movie.director.full_name)}}">{{movie.director.full_name}}</a></p>
       <p class="movie-page-description"><strong>Description:</strong> {{movie.description}}</p>
 
 
